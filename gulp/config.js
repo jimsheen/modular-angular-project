@@ -4,6 +4,10 @@ var js = {
     'src': src + 'js/',
     'dest': dest + 'js/',
 }
+var libs = {
+    'src' : src + 'assets/libs/',
+    'dest' : dest + 'sharedLibs'
+}
 module.exports = {
     defaults: {
         src: src,
@@ -12,17 +16,13 @@ module.exports = {
         watchChanged: false,
         watchEvent: {}
     },
-    foundation: {
-        src: js.src + 'libs/foundation/js/foundation/',
-        dest: js.dest + 'libs/',
-        components: ['accordion', 'dropdown']
-    },
     libs: {
         src: [
-                '!' + js.src + 'libs/foundation/**/*.js',
-                js.src + 'libs/jquery/**/*.js'
+                libs.src + 'foundation/js/foundation/',
+                libs.src + 'jquery/**/*.js',
+                libs.src + 'angular/**/*.js'
             ],
-        dest: js.dest + 'libs/'
+        dest: js.dest
     },
     // sass: {
     //   src: [

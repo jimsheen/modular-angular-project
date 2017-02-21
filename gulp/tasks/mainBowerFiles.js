@@ -2,7 +2,7 @@ var gulp = require('gulp');
 
 var mainBowerFiles = require('gulp-main-bower-files');
 
-gulp.task('main-bower-files', function() {
+gulp.task('mainBowerFiles', function() {
     return gulp.src('./bower.json')
         .pipe(mainBowerFiles({
             overrides: {
@@ -14,5 +14,5 @@ gulp.task('main-bower-files', function() {
                 }
             }
         }))
-        .pipe(gulp.dest('./src/js/libs'));
+        .pipe(gulp.dest('./src/assets/libs'));
 });

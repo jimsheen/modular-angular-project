@@ -135,6 +135,10 @@ function setEnv(string) {
     process.env.NODE_ENV = env;
 }
 
+gulp.task('bowerPostInstall', function() {
+    return gulp.start('mainBowerFiles', 'compileLibs');
+})
+
 gulp.task('testBuild', function() {
     // config.defaults.watchChanged = false;
     // setEnv('prod');

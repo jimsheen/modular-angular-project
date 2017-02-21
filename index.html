@@ -2,28 +2,24 @@
 <html>
 
 <head>
-    <title>Modular JS Test</title>
+    <title>Modular Angular Test</title>
 </head>
 
 <body>
-    <div id="basket">
-        <p>Basket</p>
-        <div id="basketList"></div>
-        <div class="priceText"><span></span></div>
+    
+ <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <div id="main">
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
 
     </div>
 
-    <div id="productsList">
 
-    </div>
 
-    <h1><a href="" id="title"></a></h1>
-    <div id="content"></div>
+
     <script src="min/js/libs/libs.js" type="text/javascript"></script>
-    <script src="min/js/libs/foundation.js" type="text/javascript"></script>
-    <script src="min/js/global.js" type="text/javascript"></script>
-    <script src="min/js/templates/home.js" type="text/javascript"></script>
-    <!-- <script src="src/main.js" type="text/javascript"></script> -->
 </body>
 
 </html>
