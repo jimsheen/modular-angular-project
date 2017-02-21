@@ -1,0 +1,17 @@
+{
+  "name": "modular-angular",
+  "description": "Modular angular project set up",
+  "main": "index.js",
+  "authors": [
+    "James Sheen"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
