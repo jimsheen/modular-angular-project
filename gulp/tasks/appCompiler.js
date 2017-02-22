@@ -3,22 +3,25 @@ var $ = require('gulp-load-plugins')();
 var gulpif = require('gulp-if');
 var config = require('../config');
 
-function compileLibs() {
+function appCompiler() {
 
-    var isProd = (process.env.NODE_ENV === 'production') ? true : false;
+    var isProd = (process.env.NODE_ENV === 'production') ? true : false
 
     console.log(process.env.NODE_ENV);
 
+    isProd = true;
+
     console.log('isProd = ' + isProd);
 
-    gulp.src(config.libs.src, { base: config.defaults.src })
+    gulp.src(config.app.src)
         .pipe(gulpif(!isProd, $.sourcemaps.init()))
         .pipe($.filelog())
-        .pipe($.concat('libs.js'))
+        .pipe($.concat('app.js'))
+        .pipe($.ngAnnotate())
         .pipe(gulpif(!isProd, $.sourcemaps.write()))
         .pipe(gulpif(isProd, $.uglify()))
         .pipe(gulpif(isProd, $.stripDebug()))
-        .pipe(gulp.dest(config.libs.dest));
+        .pipe(gulp.dest(config.app.dest));
 }
 
-gulp.task('compileLibs', compileLibs);
+gulp.task('appCompiler', appCompiler);

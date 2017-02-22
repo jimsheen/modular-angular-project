@@ -8,6 +8,7 @@ var libs = {
     'src' : src + 'assets/libs/',
     'dest' : dest + 'sharedLibs'
 }
+
 module.exports = {
     defaults: {
         src: src,
@@ -16,11 +17,17 @@ module.exports = {
         watchChanged: false,
         watchEvent: {}
     },
+    app: {
+        src: src + 'app/**/*.js',
+        dest: js.dest
+    },
     libs: {
         src: [
                 libs.src + 'foundation/js/foundation/',
                 libs.src + 'jquery/**/*.js',
-                libs.src + 'angular/**/*.js'
+                libs.src + 'angular/**/*.js',
+                libs.src + 'angular-route/**/*.js'
+
             ],
         dest: js.dest
     },
