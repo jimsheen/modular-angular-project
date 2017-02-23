@@ -1,33 +1,30 @@
-<!DOCTYPE html>
-<html ng-app="app">
+<!doctype html>
+<html class="no-js" lang="" ng-app="app">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Modular Angular Test</title>
-
-     <script src="min/js/libs.js" type="text/javascript"></script>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="min/css/libs.css">
+    <script src="min/js/libs.js" type="text/javascript"></script>
     <script src="min/js/app.js" type="text/javascript"></script>
-
 </head>
 
 <body ng-controller="homeController">
-    
-
-   
-
-
- <!-- MAIN CONTENT AND INJECTED VIEWS -->
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- MAIN CONTENT AND INJECTED VIEWS -->
     <div id="main">
-
         <!-- angular templating -->
         <!-- this is where content will be injected -->
         <div ng-view></div>
-
     </div>
-
-
-
-
-    
 </body>
 
 </html>

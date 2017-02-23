@@ -9,11 +9,11 @@ function appCompiler() {
 
     console.log(process.env.NODE_ENV);
 
-    isProd = true;
+    // isProd = true;
 
     console.log('isProd = ' + isProd);
 
-    gulp.src(config.app.src)
+    gulp.src(config.app.js.src)
         .pipe(gulpif(!isProd, $.sourcemaps.init()))
         .pipe($.filelog())
         .pipe($.concat('app.js'))
@@ -21,7 +21,11 @@ function appCompiler() {
         .pipe(gulpif(!isProd, $.sourcemaps.write()))
         .pipe(gulpif(isProd, $.uglify()))
         .pipe(gulpif(isProd, $.stripDebug()))
-        .pipe(gulp.dest(config.app.dest));
+        .pipe(gulp.dest(config.app.js.dest));
+
+    gulp.src(config.app.html.src, { base: config.app.html.src })
+        .pipe($.flatten())
+        .pipe(gulp.dest(config.app.html.dest))
 }
 
 gulp.task('appCompiler', appCompiler);
