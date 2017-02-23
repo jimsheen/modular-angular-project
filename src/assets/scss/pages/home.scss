@@ -1,3 +1,11 @@
+@import '../includes/includes';
+@import '../modules/sliderMain';
+
+
 #main {
-	background:red;
+	background:$red;
+}
+
+.btn {
+	@extend %btn;
 }

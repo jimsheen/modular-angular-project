@@ -144,3 +144,10 @@ gulp.task('testBuild', function() {
     // setEnv('prod');
     return gulp.start('compileLibs', 'globalScripts', 'compileFoundation', 'scriptCompiler');
 })
+
+gulp.task('testDev', function() {
+    setEnv('dev');
+    return gulp.start('libCompiler', 'appCompiler', 'sassCompiler');
+})
+
+

@@ -5,4 +5,6 @@ app.controller('homeController', function($scope) {
 
     // create a message to display in our view
     $scope.message = 'Home page view message';
+
+    $scope.ready = true;
 });
