@@ -45,13 +45,12 @@ module.exports = {
             dest: dest + 'css/'
         }
     },
-    // sass: {
-    //   src: [
-    //     src + '/**/*.scss'
-    //   ],
-    //   outputName: 'moondash.css',
-    //   dest: dest
-    // },
+    sass: {
+      src: [
+        src + 'assets/scss/**/*.scss'
+      ],
+      dest: dest + 'css/'
+    },
     scriptCompiler: {
         home: {
             deps: [
