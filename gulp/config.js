@@ -33,7 +33,8 @@ module.exports = {
                 libs.src + 'jquery/**/*.js',
                 libs.src + 'foundation/js/foundation/foundation.js',
                 libs.src + 'angular/**/*.js',
-                libs.src + 'angular-route/**/*.js'
+                libs.src + 'angular-route/**/*.js',
+                libs.src + 'angular-css/**/*.js'
             ],
             dest: js.dest
         },

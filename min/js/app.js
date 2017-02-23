@@ -1,39 +1,39 @@
-var app = angular.module('app', ['ngRoute']);
+var app = angular.module('app', ['ngRoute', 'angularCSS']);
 
 
 
-app.config(["$routeProvider", function($routeProvider) {
+app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {
     $routeProvider
     // route for the home page
         .when('/', {
             templateUrl: 'min/homeView.html',
-            controller: 'homeController'
+            controller: 'homeController',
+            css: 'min/css/home.css'
         })
         .when('/about', {
-            templateUrl: 'min/homeView.html',
-            controller: 'homeController'
-        })
-
+            templateUrl: 'min/aboutView.html',
+            controller: 'aboutController',
+            css: 'min/css/about.css'
+        });
+    // use the HTML5 History API
+    $locationProvider.html5Mode(true);
 }]);
 
-app.controller('homeController', ["$scope", function($scope) {
+app.controller('aboutController', ["$scope", "$route", function($scope, $route) {
 
-	// stylesheet for home page used by cssLinkDirective
-	$scope.cssLink = 'home';
+	 $scope.$route = $route;
+
+    // create a message to display in our view
+    $scope.message = 'About page view message';
+}]);
+
+app.controller('homeController', ["$scope", "$route", function($scope, $route) {
+
+	 $scope.$route = $route;
 
     // create a message to display in our view
     $scope.message = 'Home page view message';
-
-    $scope.ready = true;
 }]);
 
 
-app.directive('cssLink', function() {
-    return {
-        restrict: 'AE',
-        replace: 'true',
-        template: '<link rel="stylesheet" ng-href="min/css/{{cssLink}}.css"></link>'
-    };
-});
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5tb2R1bGUuanMiLCJhcHAucm91dGVzLmpzIiwiY29tcG9uZW50cy9ob21lL2hvbWVDb250cm9sbGVyLmpzIiwic2hhcmVkL2RpcmVjdGl2ZXMvY3NzTGlua0RpcmVjdGl2ZS5qcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxJQUFBLE1BQUEsUUFBQSxPQUFBLE9BQUEsQ0FBQTs7OztBQ0FBLElBQUEsMEJBQUEsU0FBQSxnQkFBQTtJQUNBOztTQUVBLEtBQUEsS0FBQTtZQUNBLGFBQUE7WUFDQSxZQUFBOztTQUVBLEtBQUEsVUFBQTtZQUNBLGFBQUE7WUFDQSxZQUFBOzs7OztBQ1RBLElBQUEsV0FBQSw2QkFBQSxTQUFBLFFBQUE7OztDQUdBLE9BQUEsVUFBQTs7O0lBR0EsT0FBQSxVQUFBOztJQUVBLE9BQUEsUUFBQTs7OztBQ1JBLElBQUEsVUFBQSxXQUFBLFdBQUE7SUFDQSxPQUFBO1FBQ0EsVUFBQTtRQUNBLFNBQUE7UUFDQSxVQUFBOzs7QUFHQSIsImZpbGUiOiJhcHAuanMiLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgYXBwID0gYW5ndWxhci5tb2R1bGUoJ2FwcCcsIFsnbmdSb3V0ZSddKTtcblxuXG4iLCJhcHAuY29uZmlnKGZ1bmN0aW9uKCRyb3V0ZVByb3ZpZGVyKSB7XG4gICAgJHJvdXRlUHJvdmlkZXJcbiAgICAvLyByb3V0ZSBmb3IgdGhlIGhvbWUgcGFnZVxuICAgICAgICAud2hlbignLycsIHtcbiAgICAgICAgICAgIHRlbXBsYXRlVXJsOiAnbWluL2hvbWVWaWV3Lmh0bWwnLFxuICAgICAgICAgICAgY29udHJvbGxlcjogJ2hvbWVDb250cm9sbGVyJ1xuICAgICAgICB9KVxuICAgICAgICAud2hlbignL2Fib3V0Jywge1xuICAgICAgICAgICAgdGVtcGxhdGVVcmw6ICdtaW4vaG9tZVZpZXcuaHRtbCcsXG4gICAgICAgICAgICBjb250cm9sbGVyOiAnaG9tZUNvbnRyb2xsZXInXG4gICAgICAgIH0pXG5cbn0pO1xuIiwiYXBwLmNvbnRyb2xsZXIoJ2hvbWVDb250cm9sbGVyJywgZnVuY3Rpb24oJHNjb3BlKSB7XG5cblx0Ly8gc3R5bGVzaGVldCBmb3IgaG9tZSBwYWdlIHVzZWQgYnkgY3NzTGlua0RpcmVjdGl2ZVxuXHQkc2NvcGUuY3NzTGluayA9ICdob21lJztcblxuICAgIC8vIGNyZWF0ZSBhIG1lc3NhZ2UgdG8gZGlzcGxheSBpbiBvdXIgdmlld1xuICAgICRzY29wZS5tZXNzYWdlID0gJ0hvbWUgcGFnZSB2aWV3IG1lc3NhZ2UnO1xuXG4gICAgJHNjb3BlLnJlYWR5ID0gdHJ1ZTtcbn0pO1xuIiwiYXBwLmRpcmVjdGl2ZSgnY3NzTGluaycsIGZ1bmN0aW9uKCkge1xuICAgIHJldHVybiB7XG4gICAgICAgIHJlc3RyaWN0OiAnQUUnLFxuICAgICAgICByZXBsYWNlOiAndHJ1ZScsXG4gICAgICAgIHRlbXBsYXRlOiAnPGxpbmsgcmVsPVwic3R5bGVzaGVldFwiIG5nLWhyZWY9XCJtaW4vY3NzL3t7Y3NzTGlua319LmNzc1wiPjwvbGluaz4nXG4gICAgfTtcbn0pO1xuIl19
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFwcC5tb2R1bGUuanMiLCJhcHAucm91dGVzLmpzIiwiY29tcG9uZW50cy9hYm91dC9hYm91dENvbnRyb2xsZXIuanMiLCJjb21wb25lbnRzL2hvbWUvaG9tZUNvbnRyb2xsZXIuanMiLCJzaGFyZWQvc2lkZWJhci9zaWRlYmFyRGlyZWN0aXZlLmpzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLElBQUEsTUFBQSxRQUFBLE9BQUEsT0FBQSxDQUFBLFdBQUE7Ozs7QUNBQSxJQUFBLCtDQUFBLFNBQUEsZ0JBQUEsbUJBQUE7SUFDQTs7U0FFQSxLQUFBLEtBQUE7WUFDQSxhQUFBO1lBQ0EsWUFBQTtZQUNBLEtBQUE7O1NBRUEsS0FBQSxVQUFBO1lBQ0EsYUFBQTtZQUNBLFlBQUE7WUFDQSxLQUFBOzs7SUFHQSxrQkFBQSxVQUFBOzs7QUNkQSxJQUFBLFdBQUEsd0NBQUEsU0FBQSxRQUFBLFFBQUE7O0VBRUEsT0FBQSxTQUFBOzs7SUFHQSxPQUFBLFVBQUE7OztBQ0xBLElBQUEsV0FBQSx1Q0FBQSxTQUFBLFFBQUEsUUFBQTs7RUFFQSxPQUFBLFNBQUE7OztJQUdBLE9BQUEsVUFBQTs7O0FDTEEiLCJmaWxlIjoiYXBwLmpzIiwic291cmNlc0NvbnRlbnQiOlsidmFyIGFwcCA9IGFuZ3VsYXIubW9kdWxlKCdhcHAnLCBbJ25nUm91dGUnLCAnYW5ndWxhckNTUyddKTtcblxuXG4iLCJhcHAuY29uZmlnKGZ1bmN0aW9uKCRyb3V0ZVByb3ZpZGVyLCAkbG9jYXRpb25Qcm92aWRlcikge1xuICAgICRyb3V0ZVByb3ZpZGVyXG4gICAgLy8gcm91dGUgZm9yIHRoZSBob21lIHBhZ2VcbiAgICAgICAgLndoZW4oJy8nLCB7XG4gICAgICAgICAgICB0ZW1wbGF0ZVVybDogJ21pbi9ob21lVmlldy5odG1sJyxcbiAgICAgICAgICAgIGNvbnRyb2xsZXI6ICdob21lQ29udHJvbGxlcicsXG4gICAgICAgICAgICBjc3M6ICdtaW4vY3NzL2hvbWUuY3NzJ1xuICAgICAgICB9KVxuICAgICAgICAud2hlbignL2Fib3V0Jywge1xuICAgICAgICAgICAgdGVtcGxhdGVVcmw6ICdtaW4vYWJvdXRWaWV3Lmh0bWwnLFxuICAgICAgICAgICAgY29udHJvbGxlcjogJ2Fib3V0Q29udHJvbGxlcicsXG4gICAgICAgICAgICBjc3M6ICdtaW4vY3NzL2Fib3V0LmNzcydcbiAgICAgICAgfSk7XG4gICAgLy8gdXNlIHRoZSBIVE1MNSBIaXN0b3J5IEFQSVxuICAgICRsb2NhdGlvblByb3ZpZGVyLmh0bWw1TW9kZSh0cnVlKTtcbn0pO1xuIiwiYXBwLmNvbnRyb2xsZXIoJ2Fib3V0Q29udHJvbGxlcicsIGZ1bmN0aW9uKCRzY29wZSwgJHJvdXRlKSB7XG5cblx0ICRzY29wZS4kcm91dGUgPSAkcm91dGU7XG5cbiAgICAvLyBjcmVhdGUgYSBtZXNzYWdlIHRvIGRpc3BsYXkgaW4gb3VyIHZpZXdcbiAgICAkc2NvcGUubWVzc2FnZSA9ICdBYm91dCBwYWdlIHZpZXcgbWVzc2FnZSc7XG59KTtcbiIsImFwcC5jb250cm9sbGVyKCdob21lQ29udHJvbGxlcicsIGZ1bmN0aW9uKCRzY29wZSwgJHJvdXRlKSB7XG5cblx0ICRzY29wZS4kcm91dGUgPSAkcm91dGU7XG5cbiAgICAvLyBjcmVhdGUgYSBtZXNzYWdlIHRvIGRpc3BsYXkgaW4gb3VyIHZpZXdcbiAgICAkc2NvcGUubWVzc2FnZSA9ICdIb21lIHBhZ2UgdmlldyBtZXNzYWdlJztcbn0pO1xuIiwiIl19

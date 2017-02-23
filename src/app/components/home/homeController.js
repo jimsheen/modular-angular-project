@@ -1,10 +1,7 @@
-app.controller('homeController', function($scope) {
+app.controller('homeController', function($scope, $route) {
 
-	// stylesheet for home page used by cssLinkDirective
-	$scope.cssLink = 'home';
+	 $scope.$route = $route;
 
     // create a message to display in our view
     $scope.message = 'Home page view message';
-
-    $scope.ready = true;
 });

@@ -1,0 +1,15 @@
+@import '../includes/includes';
+@import '../modules/sliderMain';
+
+
+#main {
+	background:blue;
+}
+
+#about {
+	background:black;
+}
+
+.btn {
+	@extend %btn;
+}

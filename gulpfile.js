@@ -136,7 +136,7 @@ function setEnv(string) {
 }
 
 gulp.task('bowerPostInstall', function() {
-    return gulp.start('mainBowerFiles', 'compileLibs');
+    return gulp.start('mainBowerFiles', 'libCompiler');
 })
 
 gulp.task('testBuild', function() {
